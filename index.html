@@ -3,50 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>答案之书</title>
+    <title>答案之书 📖</title>
     <style>
+        /* 🔥 让网页更具 INS 风格 */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         body {
-            font-family: "Arial", sans-serif;
-            text-align: center;
-            background: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            background: linear-gradient(135deg, #f6d365, #fda085); /* 渐变背景 */
+            overflow: hidden;
         }
+
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 400px;
+            background: rgba(255, 255, 255, 0.2); /* 玻璃拟态效果 */
+            backdrop-filter: blur(10px); /* 背景模糊 */
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
         }
+
         h1 {
             font-size: 24px;
-            color: #333;
-        }
-        .answer {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 20px 0;
-            color: #007BFF;
-        }
-        button {
-            background: #007BFF;
+            font-weight: 600;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: 0.3s;
+            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
+
+        .answer {
+            font-size: 22px;
+            font-weight: 500;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        button {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
         button:hover {
-            background: #0056b3;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* 🎬 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -54,11 +80,12 @@
 
     <div class="container">
         <h1>📖 答案之书</h1>
-        <p class="answer" id="answerText">正在思考答案...</p>
-        <button onclick="generateAnswer()">再问一次</button>
+        <p class="answer" id="answerText">请稍等，答案正在生成...</p>
+        <button onclick="generateAnswer()">🔮 再问一次</button>
     </div>
 
     <script>
+        /* 🔮 答案列表 */
         const answers = [
             "是的。",
             "再考虑一下。",
@@ -69,12 +96,20 @@
             "尝试一下，或许会有惊喜。",
             "最好再问一次。",
             "这事交给命运吧。",
-            "你已经知道答案了。"
+            "你已经知道答案了。",
+            "保持神秘，答案即将揭晓..."
         ];
 
         function generateAnswer() {
             const randomIndex = Math.floor(Math.random() * answers.length);
-            document.getElementById("answerText").textContent = answers[randomIndex];
+            const answerElement = document.getElementById("answerText");
+            
+            // 🎬 重新播放动画
+            answerElement.style.opacity = "0";
+            setTimeout(() => {
+                answerElement.textContent = answers[randomIndex];
+                answerElement.style.opacity = "1";
+            }, 300);
         }
 
         // 页面加载时自动生成答案
