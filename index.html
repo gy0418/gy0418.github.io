@@ -1,120 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>答案之书 📖</title>
-    <style>
-        /* 🔥 让网页更具 INS 风格 */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #f6d365, #fda085); /* 渐变背景 */
-            overflow: hidden;
-        }
-
-        .container {
-            background: rgba(255, 255, 255, 0.2); /* 玻璃拟态效果 */
-            backdrop-filter: blur(10px); /* 背景模糊 */
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        h1 {
-            font-size: 24px;
-            font-weight: 600;
-            color: white;
-            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-        }
-
-        .answer {
-            font-size: 22px;
-            font-weight: 500;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            animation: slideIn 0.8s ease-out;
-        }
-
-        button {
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 500;
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-
-        button:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        /* 🎬 动画效果 */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>中美关税报道分析：媒体与微博舆情对比</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>中美关税事件舆情分析</h1>
+  <p>本项目对2025年4月美国对华加征关税事件，结合中国主流媒体报道与微博网友评论进行词频与情绪分析。</p>
 
-    <div class="container">
-        <h1>📖 答案之书</h1>
-        <p class="answer" id="answerText">请稍等，答案正在生成...</p>
-        <button onclick="generateAnswer()">🔮 再问一次</button>
-    </div>
+  <h2>📌 媒体报道关键词词云图</h2>
+  <img src="特朗普_wordcloud_优化.png" alt="媒体词云图">
 
-    <script>
-        /* 🔮 答案列表 */
-        const answers = [
-            "是的。",
-            "再考虑一下。",
-            "不要犹豫。",
-            "答案就在你心里。",
-            "这不是个好主意。",
-            "顺其自然。",
-            "尝试一下，或许会有惊喜。",
-            "最好再问一次。",
-            "这事交给命运吧。",
-            "你已经知道答案了。",
-            "保持神秘，答案即将揭晓..."
-        ];
+  <h2>📌 微博评论关键词词云图</h2>
+  <img src="积极_wordcloud.png" alt="微博词云图">
 
-        function generateAnswer() {
-            const randomIndex = Math.floor(Math.random() * answers.length);
-            const answerElement = document.getElementById("answerText");
-            
-            // 🎬 重新播放动画
-            answerElement.style.opacity = "0";
-            setTimeout(() => {
-                answerElement.textContent = answers[randomIndex];
-                answerElement.style.opacity = "1";
-            }, 300);
-        }
+  <h2>📊 微博评论情绪柱状图</h2>
+  <img src="情绪_bar_chart.png" alt="情绪柱状图">
 
-        // 页面加载时自动生成答案
-        generateAnswer();
-    </script>
-
+  <p class="summary">
+    初步分析显示，媒体报道多使用“政策”“经济”“白宫”等理性叙事词汇，而微博评论中则充满“愤怒”“压榨”“反制”等情绪化用语。微博整体呈现负面情绪主导的现象，体现出民间对中美贸易关系的情绪反应。
+  </p>
 </body>
 </html>
