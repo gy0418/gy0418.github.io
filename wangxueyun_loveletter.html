@@ -9,7 +9,7 @@
       padding: 0;
       height: 100vh;
       background: url('bg.jpg') no-repeat center center/cover;
-      overflow: hidden;
+      overflow-x: hidden;
       font-family: 'KaiTi', serif;
       color: #2c3e50;
     }
@@ -20,6 +20,7 @@
       align-items: center;
       justify-content: center;
       height: 100%;
+      text-align: center;
     }
 
     .glass-card {
@@ -46,7 +47,7 @@
       margin-top: 30px;
     }
 
-    .button-group a, .button-group button {
+    .button-group button {
       margin: 10px;
       padding: 12px 24px;
       font-family: 'Courier New', monospace;
@@ -55,12 +56,11 @@
       background: rgba(255,255,255,0.6);
       box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
       cursor: pointer;
-      text-decoration: none;
       color: #333;
       transition: all 0.3s ease;
     }
 
-    .button-group a:hover, .button-group button:hover {
+    .button-group button:hover {
       background: #ffffff;
     }
 
@@ -69,6 +69,63 @@
       font-style: italic;
       font-size: 0.95em;
       color: #444;
+    }
+
+    .envelope {
+      width: 160px;
+      height: 100px;
+      background: #fff;
+      position: relative;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.5s ease;
+      margin-top: 50px;
+    }
+
+    .envelope::before, .envelope::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background: #fff;
+      left: 0;
+      transition: all 0.5s ease;
+    }
+
+    .envelope::before {
+      top: 0;
+      transform-origin: bottom;
+      transform: rotateX(0deg);
+      border-bottom: 1px solid #ccc;
+    }
+
+    .envelope::after {
+      bottom: 0;
+      border-top: 1px solid #ccc;
+    }
+
+    .envelope.open::before {
+      transform: rotateX(-120deg);
+    }
+
+    .letter {
+      opacity: 0;
+      max-width: 90vw;
+      margin: 30px auto;
+      padding: 30px;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: opacity 1s ease;
+      color: #2c3e50;
+      line-height: 1.8;
+    }
+
+    .letter.show {
+      opacity: 1;
     }
 
     .snowflake {
@@ -97,13 +154,34 @@
       <p>“你好啊，我很好。” ——《情书》</p>
       <div class="button-group">
         <button onclick="alert('写信页面还在路上 :)')">✉️ 写信给雪芸</button>
-        <a href="envelope.html">❄️ 阅读情书</a>
+        <button onclick="toggleEnvelope()">❄️ 阅读情书</button>
       </div>
       <div class="quote">「我把想说的话写在雪里了，它会飘到你身边」</div>
+    </div>
+
+    <div class="envelope" id="envelope" title="点击打开信封 ✉️" style="display:none;"></div>
+
+    <div class="letter" id="letter">
+      <p>❄️🦋 后来有人问我爱情是什么的时候，<br>我就回答“知道我不在的人”。<br><span style="float:right;">—— 金爱烂</span></p>
+      <p>❄️🦋 爱的本质是被看见。<br><span style="float:right;">—— 菲利帕·佩里</span></p>
+      <p>❄️🦋 我始终以为我想要被爱，被仰慕。<br>如今想想，说不定我想要被了解。<br><span style="float:right;">—— 克莉丝汀·汉娜</span></p>
+      <p>❄️🦋 我总是陷入莫名奇妙的忧郁，<br>甚至期待有人了解这种忧郁。<br><span style="float:right;">—— 金爱烂</span></p>
+      <p>❄️🦋 窗外是佛罗伦萨，桌上是死。<br><span style="float:right;">—— 加缪</span></p>
     </div>
   </div>
 
   <script>
+    const envelope = document.getElementById("envelope");
+    const letter = document.getElementById("letter");
+
+    function toggleEnvelope() {
+      envelope.style.display = 'block';
+      setTimeout(() => {
+        envelope.classList.add("open");
+        letter.classList.add("show");
+      }, 300);
+    }
+
     for (let i = 0; i < 60; i++) {
       const flake = document.createElement("div");
       flake.className = "snowflake";
