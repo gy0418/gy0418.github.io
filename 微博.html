@@ -2,283 +2,99 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <title>特朗普微博情绪可视化大屏</title>
+  <title>特朗普微博情绪可视化</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", "PingFang SC", sans-serif;
-      background: radial-gradient(circle at center, #0a1a2f, #000);
-      color: #fff;
-      scroll-behavior: smooth;
+      font-family: "Helvetica Neue", sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
     }
 
-    h1 {
+    header {
+      background-color: #ffffff;
+      padding: 40px 20px;
       text-align: center;
-      font-size: 36px;
-      padding: 30px 10px;
-      background: linear-gradient(to right, #ff4d4d, #4d79ff);
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
-    .dashboard {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      padding: 30px 20px;
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #222;
+      font-weight: bold;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,255,255,0.2);
-      padding: 20px;
-      width: 45%;
-      min-width: 350px;
-      transition: 0.3s ease;
+    .section {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.04);
     }
 
-    .card:hover {
-      transform: scale(1.015);
-      box-shadow: 0 0 30px rgba(0,255,255,0.4);
+    .section h2 {
+      font-size: 20px;
+      color: #444;
+      margin-bottom: 10px;
     }
 
-    .card h2 {
-      text-align: center;
-      font-size: 22px;
-      color: #00eaff;
-      margin-bottom: 12px;
-      text-shadow: 0 0 5px rgba(0,255,255,0.4);
+    .section p {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 20px;
     }
 
     iframe {
       width: 100%;
-      height: 500px;
-      border: none;
-      border-radius: 10px;
+      height: 520px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
       background: #fff;
-    }
-
-    .note {
-      text-align: center;
-      font-size: 15px;
-      color: #aaa;
-      margin-top: -10px;
-      margin-bottom: 20px;
     }
 
     footer {
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
+      color: #888;
       padding: 30px 10px;
-      background-color: #02111d;
-      color: #bbb;
       margin-top: 40px;
     }
 
-    #top-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      padding: 10px 16px;
-      font-size: 14px;
-      background-color: #00eaff;
-      color: #000;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00eaff;
-      transition: 0.3s ease;
-    }
-
-    #top-btn:hover {
-      background-color: #00c6ff;
-      box-shadow: 0 0 20px #00ffff;
-    }
-
     @media (max-width: 768px) {
-      .dashboard {
-        flex-direction: column;
-        align-items: center;
+      .section {
+        margin: 20px 10px;
+        padding: 20px;
       }
+
       iframe {
         height: 400px;
       }
     }
   </style>
 </head>
+<body>
 
-<body id="top">
+  <header>
+    <h1>特朗普相关微博情绪分析</h1>
+  </header>
 
-  <h1>特朗普相关微博情绪分析可视化</h1>
-
-  <div class="dashboard">
-
-    <div class="card" id="trend">
-      <h2>📈 情绪趋势图</h2>
-      <div class="note">展示微博情绪随时间变化趋势，标注重要新闻节点</div>
-      <iframe src="情绪趋势图.html"></iframe>
-    </div>
-
-    <div class="card" id="cloud">
-      <h2>📊 高频情绪关键词柱状图</h2>
-      <div class="note">关键词按情绪得分排序，突出正负向代表性</div>
-      <iframe src="<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8" />
-  <title>特朗普微博情绪可视化大屏</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", "PingFang SC", sans-serif;
-      background: radial-gradient(circle at center, #0a1a2f, #000);
-      color: #fff;
-      scroll-behavior: smooth;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 36px;
-      padding: 30px 10px;
-      background: linear-gradient(to right, #ff4d4d, #4d79ff);
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-    }
-
-    .dashboard {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      padding: 30px 20px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,255,255,0.2);
-      padding: 20px;
-      width: 45%;
-      min-width: 350px;
-      transition: 0.3s ease;
-    }
-
-    .card:hover {
-      transform: scale(1.015);
-      box-shadow: 0 0 30px rgba(0,255,255,0.4);
-    }
-
-    .card h2 {
-      text-align: center;
-      font-size: 22px;
-      color: #00eaff;
-      margin-bottom: 12px;
-      text-shadow: 0 0 5px rgba(0,255,255,0.4);
-    }
-
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-      border-radius: 10px;
-      background: #fff;
-    }
-
-    .note {
-      text-align: center;
-      font-size: 15px;
-      color: #aaa;
-      margin-top: -10px;
-      margin-bottom: 20px;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 14px;
-      padding: 30px 10px;
-      background-color: #02111d;
-      color: #bbb;
-      margin-top: 40px;
-    }
-
-    #top-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      padding: 10px 16px;
-      font-size: 14px;
-      background-color: #00eaff;
-      color: #000;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00eaff;
-      transition: 0.3s ease;
-    }
-
-    #top-btn:hover {
-      background-color: #00c6ff;
-      box-shadow: 0 0 20px #00ffff;
-    }
-
-    @media (max-width: 768px) {
-      .dashboard {
-        flex-direction: column;
-        align-items: center;
-      }
-      iframe {
-        height: 400px;
-      }
-    }
-  </style>
-</head>
-
-<body id="top">
-
-  <h1>特朗普相关微博情绪分析可视化</h1>
-
-  <div class="dashboard">
-
-    <div class="card" id="trend">
-      <h2>📈 情绪趋势图</h2>
-      <div class="note">展示微博情绪随时间变化趋势，标注重要新闻节点</div>
-      <iframe src="情绪趋势图.html"></iframe>
-    </div>
-
-    <div class="card" id="cloud">
-      <h2>📊 高频情绪关键词柱状图</h2>
-      <div class="note">关键词按情绪得分排序，突出正负向代表性</div>
-      <iframe src="sentiment_bar_chart.html"></iframe>
-    </div>
-
+  <div class="section">
+    <h2>📈 情绪趋势图</h2>
+    <p>展示在 2025 年 7 月初，微博用户对于特朗普话题情绪的变化情况。</p>
+    <iframe src="情绪趋势图.html"></iframe>
   </div>
 
-  <button id="top-btn" onclick="document.getElementById('top').scrollIntoView()">⬆ 回到顶部</button>
-
-  <footer>
-    数据来源：微博爬虫 · 情感分析模型（百度NLP API）<br />
-    可视化技术：Pyecharts + HTML ｜ 项目作者：高媛（202301083022）
-  </footer>
-
-</body>
-</html>.html"></iframe>
-    </div>
-
+  <div class="section">
+    <h2>📊 微博文本高频词柱状图</h2>
+    <p>展示最常出现的情绪关键词及其强度分布。</p>
+    <iframe src="微博文本高频词柱状图.html"></iframe>
   </div>
 
-  <button id="top-btn" onclick="document.getElementById('top').scrollIntoView()">⬆ 回到顶部</button>
-
   <footer>
-    数据来源：微博爬虫 · 情感分析模型（百度NLP API）<br />
-    可视化技术：Pyecharts + HTML ｜ 项目作者：高媛（202301083022）
+    数据来源：微博爬虫 · 技术支持：Pyecharts · 制作人：高媛
   </footer>
 
 </body>
