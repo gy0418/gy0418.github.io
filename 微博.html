@@ -2,72 +2,94 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>特朗普微博情绪可视化</title>
+  <title>特朗普微博情绪可视化大屏</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(90deg, #ff4d4d 0%, #ffffff 50%, #4d79ff 100%);
-      animation: gradientShift 10s infinite alternate;
+      background-color: #031c33;
+      font-family: '微软雅黑', sans-serif;
+      color: #fff;
     }
 
-    @keyframes gradientShift {
-      0%   { background-position: left; }
-      100% { background-position: right; }
-    }
-
-    h1 {
+    header {
       text-align: center;
-      color: #222;
-      padding: 20px;
-      font-weight: bold;
-      background-color: rgba(255,255,255,0.6);
+      padding: 30px 10px;
+      background: linear-gradient(to right, #003366, #004080, #003366);
+      color: #00eaff;
+      font-size: 28px;
+      letter-spacing: 2px;
+      box-shadow: 0 0 10px #00c6ff;
     }
 
-    .iframe-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-      padding: 30px;
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 40px;
+      padding: 40px;
+      background: url('https://img.tukuppt.com/bg_grid/00/09/74/6YTNHGPyFX.jpg!/fw/780') repeat;
+    }
+
+    .card {
+      background: rgba(0, 34, 64, 0.7);
+      border: 1px solid #00f7ff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 15px #00eaff;
+    }
+
+    .card-title {
+      font-size: 20px;
+      color: #00f7ff;
+      margin-bottom: 15px;
+      text-align: center;
+      border-bottom: 1px dashed #00f7ff;
+      padding-bottom: 10px;
     }
 
     iframe, img {
-      width: 90%;
-      height: 500px;
-      border: 4px solid #fff;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      border-radius: 10px;
-      background-color: #fff;
+      width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,255,255,0.3);
     }
 
-    img {
-      object-fit: contain;
-      transition: transform 0.3s;
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #aaa;
+      background: #02111d;
     }
 
-    img:hover {
-      transform: scale(1.05);
-    }
-
-    .label {
-      font-size: 20px;
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 1px 1px 3px #000;
+    @media (max-width: 800px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>特朗普相关微博情绪分析展示</h1>
 
-  <div class="iframe-container">
-    <div class="label">🔵 情绪趋势图</div>
-    <iframe src="https://github.com/gy0418/gy0418.github.io/blob/main/情绪趋势图.html"></iframe>
+  <header>特朗普相关微博情绪分析大屏</header>
 
-    <div class="label">🔴 高频词云图</div>
-    <img src="https://github.com/gy0418/gy0418.github.io/blob/main/wordcloud_total.png" alt="词云图" />
+  <div class="dashboard">
+    <div class="card">
+      <div class="card-title">📈 情绪趋势图（点击查看交互）</div>
+      <a href="情绪趋势图.html" target="_blank">
+        <img src="sentiment_bar_chart.png" alt="情绪趋势图">
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔍 高频词云图</div>
+      <img src="wordcloud_total.png" alt="词云图">
+    </div>
   </div>
+
+  <footer>
+    数据来源：微博舆情分析 · 数据可视化展示 · Powered by ECharts & Pyecharts
+  </footer>
 
 </body>
 </html>
